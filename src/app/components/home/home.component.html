@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row min-vh-100 align-items-center justify-content-center">
+    <div class="col-md-6 text-center">
+      <h1 class="display-4 mb-4">Bienvenido a ConocemeAPP</h1>
+      <p class="lead mb-5">Selecciona tu tipo de usuario para continuar</p>
+      
+      <div class="d-grid gap-3 col-md-8 mx-auto">
+        <button class="btn btn-primary btn-lg" (click)="navigateToLogin('cliente')">
+          <i class="fas fa-user me-2"></i>Soy Cliente
+        </button>
+        <button class="btn btn-success btn-lg" (click)="navigateToLogin('trabajador')">
+          <i class="fas fa-briefcase me-2"></i>Soy Trabajador
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
