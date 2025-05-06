@@ -20,17 +20,6 @@
   background: #8d4c67;
 }
 
-.seccion-titulo {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 1px 2px #00000022;
-}
-
-.bg-empleados .seccion-titulo {
-  color: #fff;
-}
-
 .btn-seccion-empleados, .btn-seccion-clientes {
   font-size: 2rem;
   font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
@@ -49,31 +38,11 @@
 
 .btn-seccion-clientes {
   background: #e7d1db;
-  color: #7a1b3a;
+  color: #591229;
 }
 
 .btn-seccion-empleados:hover, .btn-seccion-clientes:hover {
   transform: scale(1.05);
-}
-
-.icon-hand {
-  font-size: 2rem;
-  color: #7a4a1b;
-  margin-top: 10px;
-}
-
-.bg-clientes .icon-hand {
-  color: #fff;
-}
-
-@media (max-width: 767px) {
-  .titulo-conoceme {
-    font-size: 2.5rem;
-  }
-  .btn-seccion-empleados, .btn-seccion-clientes {
-    font-size: 1.2rem;
-    padding: 12px 20px;
-  }
 }
 
 .bg-light {
