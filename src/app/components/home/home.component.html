@@ -1,16 +1,32 @@
-<div class="container">
-  <div class="row min-vh-100 align-items-center justify-content-center">
-    <div class="col-md-6 text-center">
-      <h1 class="display-4 mb-4">Bienvenido a ConocemeAPP</h1>
-      <p class="lead mb-5">Selecciona tu tipo de usuario para continuar</p>
-      
-      <div class="d-grid gap-3 col-md-8 mx-auto">
-        <button class="btn btn-primary btn-lg" (click)="navigateToLogin('cliente')">
-          <i class="fas fa-user me-2"></i>Soy Cliente
-        </button>
-        <button class="btn btn-success btn-lg" (click)="navigateToLogin('trabajador')">
-          <i class="fas fa-briefcase me-2"></i>Soy Trabajador
-        </button>
+<div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light">
+  <div class="text-center mb-5">
+    <div class="d-flex align-items-center justify-content-center mb-2">
+      <h1 class="titulo-conoceme fw-bolder">CONÓCEME</h1>
+    </div>
+    <p class="subtitulo-conoceme mb-0">REGISTRA A TUS CLIENTES CON CLARIDAD Y PRECISIÓN.</p>
+  </div>
+
+  <div class="row w-100 justify-content-center">
+    <div class="col-12 col-md-9">
+      <div class="overflow-hidden rounded-5 row shadow" style="height: 420px;">
+        <div class="align-items-center bg-empleados col-md-6 d-flex flex-column pt-5 border border-white rounded-start-5">
+          <h2 class="mb-4 mt-5 seccion-titulo text-white">Sección de</h2>
+          <button class="btn-seccion-empleados mb-3" (click)="navigateToLogin('trabajador')">
+            EMPLEADOS
+          </button>
+          <div class="ms-5 ps-5 pt-3">
+            <img src="/assets/images/hacer-clic.png" alt="click" width="50" height="50">
+          </div>
+        </div>
+        <div class="align-items-center bg-clientes col-md-6 d-flex flex-column pt-5 border border-white rounded-end-5">
+          <h2 class="mb-4 mt-5 seccion-titulo text-white text-white">Sección de</h2>
+          <button class="btn-seccion-clientes mb-3" (click)="navigateToLogin('cliente')">
+            CLIENTES
+          </button>
+          <div class="ms-5 ps-5 pt-3">
+            <img src="/assets/images/hacer-clic.png" alt="click" width="50" height="50">
+          </div>
+        </div>
       </div>
     </div>
   </div>
