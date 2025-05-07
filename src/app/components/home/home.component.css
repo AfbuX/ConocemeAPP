@@ -1,0 +1,53 @@
+.titulo-conoceme {
+  font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+  font-size: 4rem;
+  color: #7d4061;
+  letter-spacing: 2px;
+}
+
+.subtitulo-conoceme {
+  font-size: 1.2rem;
+  color: #6c6c6c;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.bg-empleados {
+  background: #d2b49c;
+}
+
+.bg-clientes {
+  background: #8d4c67;
+}
+
+.btn-seccion-empleados, .btn-seccion-clientes {
+  font-size: 2rem;
+  font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 18px 40px;
+  border: none;
+  box-shadow: 0 2px 8px #0001;
+  transition: transform 0.1s;
+}
+
+.btn-seccion-empleados {
+  background: #f5ede6;
+  color: #7a4a1b;
+}
+
+.btn-seccion-clientes {
+  background: #e7d1db;
+  color: #591229;
+}
+
+.btn-seccion-empleados:hover, .btn-seccion-clientes:hover {
+  transform: scale(1.05);
+}
+
+.bg-light {
+  background-image: url('/assets/images/naturaleza-fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
