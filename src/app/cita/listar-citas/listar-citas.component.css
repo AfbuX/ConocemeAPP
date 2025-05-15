@@ -1,0 +1,20 @@
+.mi-tabla{
+    font-family:"Comic Sans MS", cursive, sans-serif;
+}
+.table tbody {
+  background-color: #D8BFD8;
+}
+
+.mi-tabla td,
+.mi-tabla th {
+  background-image:url(../../../assets/images/naturaleza-fondo.png);
+  color:black;
+}
+
+
+
+.btn-custom{
+    background-color: rgb(247, 168, 65);
+    color: #000000;
+    font-size: 20px;
+}
