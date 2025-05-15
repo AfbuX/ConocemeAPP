@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ofrecidos',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './ofrecidos.component.css'
 })
 export class OfrecidosComponent {
+// constructor (private router: Router){}
 
+// enrutar(){
+//   this.router.navigate('/rutadeagendar')
+// }
 }

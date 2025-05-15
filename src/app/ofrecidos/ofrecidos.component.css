@@ -1,27 +1,58 @@
-body{
-    box-sizing: border-box;
-    background-color: blueviolet;
+
+.bg-light {
+    /* background-image: url('/assets/images/fnf.jpeg'); */
+    background-image: url('/assets/images/fondos2.png');
+    /* background-size: contain; en cuadrito */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+
+.btn{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: burlywood;
+    color: chocolate;
 }
 
 .card-container {
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     gap: 20px;
 }
 
 .card {
+    /* border: color(rgb(128, 31, 31)); */
+    text-align: center;
     border: 1px solid #ccc;
     padding: 16px;
     width: 45%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     margin: auto;
-    margin-top: 80px;
-    display: flex;
-
+    margin-top: 30px;
+    /* display: flex; */
+}
+.card-title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: darkgoldenrod;
+}
+.card-text{
+    
+    margin-top: 8px;
+    font-family:  sans-serif;
+    color: darkgoldenrod;
 }
 
 .imgs{
 overflow: hidden
 
 }
+.imgs:hover{
+    transform: scale(1.04);
+    transition-duration: 0.5s; 
+}
+
+/* .btn:hover{
+    transform: scale(1.0);
+    
+} */

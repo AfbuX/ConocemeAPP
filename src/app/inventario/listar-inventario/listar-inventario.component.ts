@@ -13,12 +13,28 @@ export class ListarInventarioComponent {
   @ViewChild('modalProducto') modal: ElementRef | undefined;
   vectorProductos: Producto[] = [
     {
-      codigo: 278, nproducto: "Hidratante profundo", cantidad: 22, seccion: 'tratamientos',
+      codigo: 1, nproducto: "Hidratante profundo", cantidad: 22, seccion: 'Tratamientos',
       marca: 'L Oréal'
     },
     {
-      codigo: 553, nproducto: "Spray", cantidad: 30, seccion: 'estilos',
+      codigo: 2, nproducto: "Spray", cantidad: 30, seccion: 'Estilos',
       marca: 'L Oréal'
+    },
+    {
+      codigo: 3, nproducto: "Acondicionador", cantidad: 45, seccion: 'Tratamientos',
+      marca: 'Enkor'
+    },
+    {
+      codigo: 4, nproducto: "Sérum", cantidad: 15, seccion: 'Tratamientos',
+      marca: 'Garnier'
+    },
+    {
+      codigo: 5, nproducto: "Tinte color Cobrizo", cantidad: 18, seccion: 'Estilos',
+      marca: 'Garnier'
+    },
+    {
+      codigo: 6, nproducto: "Tijeras con microdentado", cantidad: 10, seccion: 'Material',
+      marca: 'Enkor'
     }
   ];
 

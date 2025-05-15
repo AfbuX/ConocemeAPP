@@ -1,43 +1,50 @@
-<header>Hola inventario</header>
-<div class="row justify-content-end">
+<div class="row d-flex justify-content-between my-4">
+    <div class="col-9">
+        <h3>
+            Inventario de productos </h3>
+    </div>
     <div class="col-lg-1 col-12">
-        <button class="btn btn-success" (click)="NuevoProducto()" data-bs-toggle="modal"
+        <button class="btn btn-nuevo" (click)="NuevoProducto()" data-bs-toggle="modal"
             data-bs-target="#modalProducto">
             Nuevo
         </button>
     </div>
 </div>
-<!-- ////////////////////////////////////////////////// -->
-<div class="row">
-    <div class="col-12">
-        <table class="table table-stripped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Seccion</th>
-                    <th scope="col">Marca</th>
+<div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light">
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let prod of vectorProductos">
-                    <th scope="row">{{prod.codigo}}</th>
-                    <td>{{prod.nproducto}}</td>
-                    <td>{{prod.cantidad}}</td>
-                    <td>{{prod.seccion}}</td>
-                    <td>{{prod.marca}}</td>
+    <!-- ////////////////////////////////////////////////// -->
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-stripped table-hover">
+                <thead>
+                    <tr class="titulostabla">
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Seccion</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col"></th>
 
-                    <td>
-                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal"
-                            data-bs-target="#modalProducto" (click)="EditarProducto(prod)"> Editar </button>
-                        <button type="button" class="btn btn-outline-danger"
-                            (click)="EliminarProducto(prod)">Eliminar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of vectorProductos">
+                        <th scope="row">{{prod.codigo}}</th>
+                        <td>{{prod.nproducto}}</td>
+                        <td>{{prod.cantidad}}</td>
+                        <td>{{prod.seccion}}</td>
+                        <td>{{prod.marca}}</td>
+
+                        <td>
+                            <button type="button" class="btn btn-editar" data-bs-toggle="modal"
+                                data-bs-target="#modalProducto" (click)="EditarProducto(prod)"> Editar </button>
+                            <button type="button" class="btn btn-eliminar"
+                                (click)="EliminarProducto(prod)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -71,46 +78,3 @@
         </div>
     </div>
 </div>
-
-<!-- PRODUCTOS DE EJEMPLIFICACION
-            <tr>
-                <th scope="row">1</th>
-                <td>Hidratante profundo</td>
-                <td>1</td>
-                <td>Tratamientos</td>
-                <td>Kérastase</td>
-            </tr>
-        
-        
-
-        <tr>
-            <th scope="row">2</th>
-            <td>Mascarilla</td>
-            <td>34</td>
-            <td>Tratamientos</td>
-            <td>L'Oréal</td>
-        </tr>
-
-        <tr>
-            <th scope="row">4</th>
-            <td>Spray </td>
-            <td>15</td>
-            <td>Estilos y cambios</td>
-            <td>Sephora</td>
-        </tr>
-
-        <tr>
-            <th scope="row">4</th>
-            <td>Tinte Rubio cenizo </td>
-            <td>30</td>
-            <td>Estilos y cambios</td>
-            <td>Sephora</td>
-        </tr>
-
-        <tr> 
-            <th scope="row">5</th>
-            <td>Brocha para tintes</td>
-            <td>50</td>
-            <td>Material</td>
-            <td>Enkor</td>
-        </tr> -->
