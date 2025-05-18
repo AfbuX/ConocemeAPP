@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // Aquí irá la lógica de autenticación
+    
     console.log('Tipo de usuario:', this.userType);
     console.log('Email:', this.email);
     console.log('Password:', this.password);
