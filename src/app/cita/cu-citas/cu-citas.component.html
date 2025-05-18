@@ -1,0 +1,19 @@
+<form>
+  <div class="mb-3">
+    <label for="Nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="Nombre" placeholder="Escribe tu nombre" *ngIf="citica" [(ngModel)]="citica.nombre">
+  </div>
+  <div class="mb-3">
+    <label for="FechaCita" class="form-label">Fecha</label>
+    <input type="datetime-local" name="FechaDeCita" class="form-control" id="Fecha" *ngIf="citica" [ngModel]="formatearFechita(citica.fecha)" (ngModelChange)="actualizarFecha($event)" >
+  </div>
+  <div class="mb-3">
+    <label for="Servicio" class="form-label">Servcio</label>
+    <select class="form-control" *ngIf="citica" [(ngModel)]="citica.servicio" name="nombreServicio">
+  <option value="" disabled selected>Selecciona un servicio</option>
+  <option value="planchado">Planchado</option>
+  <option value="corte">Corte</option>
+  <option value="tinte">Tinte</option>
+</select>
+  </div>
+</form>
