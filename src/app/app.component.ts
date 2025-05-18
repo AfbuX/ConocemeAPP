@@ -14,7 +14,8 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.hideHeaderFooter = ['/', '/home', '/login'].includes(event.urlAfterRedirects);
+        const url = event.urlAfterRedirects;
+        this.hideHeaderFooter = url === '/' || url.startsWith('/login');
       }
     });
   }
