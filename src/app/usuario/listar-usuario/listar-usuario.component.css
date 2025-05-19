@@ -1,0 +1,58 @@
+.titulo-conoceme {
+  font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+  font-size: 4rem;
+  color: #7d4061;
+  letter-spacing: 2px;
+}
+
+.subtitulo-conoceme {
+  font-size: 1.2rem;
+  color: #6c6c6c;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
+
+.btn-nuevo, .btn-eliminar, .btn-editar  {
+  font-size: 1rem;
+  font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+  border-radius: 40px;
+  padding: 5px 40px;
+  border: 1px solid;
+  box-shadow: 0 2px 8px #0001;
+  transition: transform 0.1s;
+}
+
+.btn-editar{
+background: #d2b49c;
+}
+.btn-eliminar{
+
+  background: #8d4c67;
+}
+.btn-nuevo{
+background: rgb(47, 255, 68);
+}
+
+tbody {
+ 
+  border: 1px solid;
+  border-radius: 20px;
+  font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+}
+.table {
+    border: 1px solid;
+    border-radius: 300px;
+    font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
+    padding: 30px;
+}
+.bg-light {
+  background-image: url('/assets/images/naturaleza-fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+

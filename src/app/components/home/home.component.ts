@@ -11,6 +11,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigateToLogin(userType: string) {
-    this.router.navigate(['/login'], { queryParams: { type: userType } });
+    this.router.navigate(['/login', userType]);
   }
 }
