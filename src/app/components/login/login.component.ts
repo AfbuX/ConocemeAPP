@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     // Aquí iría tu lógica de autenticación real
     // Por ahora solo simulamos el login exitoso
-    this.authService.login(this.userType);
+    //this.authService.login(this.userType);
     
     if (this.userType === 'cliente') {
       this.router.navigate(['/agendar']);
