@@ -1,0 +1,32 @@
+<form>
+    <!-- CODIGO -->
+    <div class="mb-3">
+        <label for="codigo" class="form-label">Codigo Unico</label>
+        <input class="form-control" id="codigo" type="number" placeholder="000" *ngIf="producto" name="codigo" [(ngModel)]="producto.codigo">
+    </div>
+
+    <!-- NPRODUCTO -->
+    <div class="mb-3">
+        <label for="nproducto" class="form-label">Nombre del producto</label>
+        <input type="text" *ngIf="producto" class="form-control" id="nproducto" name="nproducto" placeholder="Ingresa el nombre" [(ngModel)]="producto.nproducto">
+    </div>
+
+        <!-- CANTIDAD -->
+    <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input class="form-control" id="cantidad" type="number" placeholder="0" *ngIf="producto" name="cantidad" [(ngModel)]="producto.cantidad">
+    </div>
+
+        <!-- SECCION -->
+    <div class="mb-3">
+        <label for="seccion" class="form-label">Seccion</label>
+        <input  type="text" *ngIf="producto" class="form-control" id="seccion" name="seccion"  placeholder="¿A cuál sección pertenece?"  [(ngModel)]="producto.seccion">
+    </div>
+
+        <!-- MARCA-->
+    <div class="mb-3">
+        <label for="marca" class="form-label">Marca</label>
+        <input  type="text" *ngIf="producto" class="form-control" id="marca" name="marca"  placeholder="¿Qué marca es?"  [(ngModel)]="producto.marca">
+    </div>
+</form>
+

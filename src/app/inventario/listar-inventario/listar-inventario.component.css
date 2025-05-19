@@ -1,0 +1,51 @@
+header{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 15px;
+    font-size: 25px;
+    background-color: ghostwhite;
+}
+
+.titulostabla{
+    text-align: center;
+}
+.bg-light {
+    background-image: url('/assets/images/fondop.png');
+    /* background-size: contain; en cuadrito */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+
+.btn-editar{
+    background-color: #d2b49c;
+    color: rgb(228, 228, 228);
+}
+
+.btn-eliminar{
+    background-color:#8d4c67; 
+    color: rgb(228, 228, 228);
+    margin-left: 10px;
+}
+.btn-nuevo{
+    background-color: rgb(119, 214, 24);
+    color: white;
+
+}
+
+.btn-editar:hover{
+    transform: scale(1.04);
+    transition-duration: 1s; 
+    color: white;
+}
+
+.btn-eliminar:hover{
+    transform: scale(1.04);
+    transition-duration: 1s; 
+    color: white;
+}
+.btn-nuevo:hover{
+    transform: scale(1.2);
+    transition-duration: 0.7s; 
+    transition-property: transform;
+}
