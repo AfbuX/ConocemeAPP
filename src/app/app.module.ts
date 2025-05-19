@@ -7,7 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-
+import { SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
+import { provideHttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +20,12 @@ import { FooterComponent } from './components/shared/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module.forRoot()  
   ],
-  providers: [],
+  providers: [
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

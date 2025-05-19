@@ -1,0 +1,33 @@
+<form>
+
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" *ngIf="usuario" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre"
+      [(ngModel)]="usuario.nombre">
+  </div>
+  <div class="mb-3">
+    <label for="fecha" class="form-label">Fecha de Registro</label>
+    <input class="form-control" id="fecha" type="datetime-local" *ngIf="usuario" name="fecha"
+      [ngModel]="formatDateTimeLocal(usuario.fecha)" (ngModelChange)="updateDate($event)">
+  </div>
+
+
+
+  <div class="mb-3">
+    <label for="roll" class="form-label">Rol</label>
+    <input class="form-control" id="roll" type="text" *ngIf="usuario" name="roll" placeholder="Ingrese Roll"
+      [(ngModel)]="usuario.roll">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input class="form-control" id="email" type="text" *ngIf="usuario" name="email" placeholder="Ingrese Email"
+      [(ngModel)]="usuario.email">
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input class="form-control" id="password" type="text" *ngIf="usuario" name="dbpassword" placeholder="Ingrese Password"
+      [(ngModel)]="usuario.dbpassword">
+  </div>
+</form>
