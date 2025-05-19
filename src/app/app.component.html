@@ -1,7 +1,9 @@
-<div class="container">
+<ng-container *ngIf="!hideHeaderFooter">
   <app-header></app-header>
-    <router-outlet />
+</ng-container>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="!hideHeaderFooter">
   <app-footer></app-footer>
-</div>
-
-
+</ng-container>
