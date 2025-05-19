@@ -8,7 +8,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login/:userType', component: LoginComponent },
   { path: 'registro', component: RegistrationComponent },
-  { path: '**', redirectTo: '' },
   {  path:'usuario', loadChildren: ()=>import('./usuario/usuario.module').then(m=> m.UsuarioModule)
 }
 ];
