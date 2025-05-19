@@ -1,8 +1,7 @@
 .main-header {
   width: 100%;
   background: #f7e6f7;
-  padding: 0.5rem 0;
-  box-shadow: 0 2px 8px #0001;
+  padding: 0.5rem 0  box-shadow: 0 2px 8px #0001;
 }
 
 .header-content {

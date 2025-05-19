@@ -6,11 +6,10 @@ import { CuUsuarioComponent } from './cu-usuario/cu-usuario.component';
 import { FormsModule } from '@angular/forms';
 
 const ROUTES: Routes=[
-{
-  path:'',
-  component: ListarUsuarioComponent
-
-}
+  {
+    path:'',
+    component: ListarUsuarioComponent
+  },
 ]
 
 @NgModule({

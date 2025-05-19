@@ -1,15 +1,17 @@
 <header class="main-header">
-  <div class="header-content">
+  <div class="header-content px-5">
     <div class="logo-section">
       <img src="assets/images/Logo-rosa.png" width="100" height="100" alt="Logo Conóceme" />
       <span class="logo-text"></span>
     </div>
     <nav class="nav-menu">
-      <a routerLink="/inicio" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
-      <a routerLink="/servicios" routerLinkActive="active-link">Servicios</a>
-      <a routerLink="/agenda" routerLinkActive="active-link">Agenda tu cita</a>
+      <!--  <a routerLink="/inicio" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Inicio</a> -->
       <a routerLink="/usuario" routerLinkActive="active-link" >Usuarios</a>
-      
+      <a routerLink="/agendar" routerLinkActive="active-link">Agendar cita</a>
+      <a routerLink="/servicios" routerLinkActive="active-link">Servicios</a>
     </nav>
+    <div>
+      <i class="bi bi-box-arrow-left fs-4" routerLink="/" routerLinkActive="active-link"></i>
+    </div>
   </div>
 </header>

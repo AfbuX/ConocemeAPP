@@ -1,13 +1,21 @@
-<div class="row paPonerColor">
-  <div class="col-12" id="colorsito">
-    <table class="table  mi-tabla">
+<div class="paPonerColor">
+  <div class="row">
+    <div class="col-12 text-end pe-5">
+      <button class="btn btn-add" (click)="NuevaCita()" data-bs-toggle="modal" data-bs-target="#MiModal">
+        <i class="bi bi-plus-circle"></i> Nueva cita
+      </button>
+    </div>
+  </div>
+  
+  <div class="row" id="colorsito">
+    <table class="table mi-tabla">
       <thead>
         <tr>
           <th scope="col">id</th>
           <th scope="col">Nombre</th>
           <th scope="col">Fecha</th>
           <th scope="col">Servicio</th>
-          <th scope="col">Otras Opciones</th>
+          <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -17,37 +25,34 @@
           <td>{{ct.fecha | date: 'dd/MM HH:mm'}}</td>
           <td>{{ct.servicio }}</td>
           <td>
-            <button class="btn btn-custom " data-bs-toggle="modal" data-bs-target="#MiModal"
-              (click)="cambiarCita(ct)">Cambiar mi cita</button>
-              <button class="btn btn-outline- me-4"(click)="EliminarCita(ct)">ELIMINAR CITA-</button>
+            <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#MiModal"
+              (click)="cambiarCita(ct)"><i class="bi bi-pencil-square"></i> Editar</button>
+            <button class="btn btn-delete" (click)="EliminarCita(ct)"><i class="bi bi-trash"></i> Eliminar</button>
           </td>
         </tr>
-
       </tbody>
     </table>
   </div>
-</div>
-<div class="mt-4 text-center me-4">
-  <button class="btn btn-outline- me-4" (click)="NuevaCita()" data-bs-toggle="modal" data-bs-target="#MiModal">AÑADIR CITA+</button>
-  
-</div>
 
-
-<!-- Modal Citas -->
-<div class="modal fade" id="MiModal" #MiModall tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{isNew?'Agenda':'Modifica'}}tu cita!</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <app-cu-citas [citica]="citaSeleccionada"></app-cu-citas>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar Cita</button>
-        <button type="button" class="btn btn-primary" (click)="GuardarCambios()">{{isNew? "Agendar":"Modificar"}}mi cita!</button>
+  <!-- Modal Citas -->
+  <div class="modal fade" id="MiModal" #MiModall tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{isNew?'Agenda':'Modifica'}}tu cita!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-cu-citas [citica]="citaSeleccionada"></app-cu-citas>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="GuardarCambios()">{{isNew? "Agendar":"Modificar"}}mi
+            cita!</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
