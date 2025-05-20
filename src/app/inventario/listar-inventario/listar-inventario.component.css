@@ -1,4 +1,5 @@
-header{
+
+ header{
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 15px;
@@ -6,12 +7,26 @@ header{
     background-color: ghostwhite;
 }
 
+.table-stripped-table-hover{
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    background-color: rgba(216, 191, 216, 0.9);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 288px); 
+    width: 100%;
+    display: table;
+}
 .titulostabla{
     text-align: center;
 }
 .bg-light {
     background-image: url('/assets/images/fondop.png');
-    /* background-size: contain; en cuadrito */
+    background-size: contain; 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,10 +57,11 @@ header{
 .btn-eliminar:hover{
     transform: scale(1.04);
     transition-duration: 1s; 
-    color: white;
+    background-color: #e7a6c9;
+
 }
 .btn-nuevo:hover{
     transform: scale(1.2);
     transition-duration: 0.7s; 
     transition-property: transform;
-}
+} 

@@ -20,7 +20,12 @@
         <!-- SECCION -->
     <div class="mb-3">
         <label for="seccion" class="form-label">Seccion</label>
-        <input  type="text" *ngIf="producto" class="form-control" id="seccion" name="seccion"  placeholder="¿A cuál sección pertenece?"  [(ngModel)]="producto.seccion">
+        <select class="form-control" *ngIf="producto" [(ngModel)]="producto.seccion" name="nombreseccion">
+      <option value="" disabled selected>Selecciona seccion</option>
+      <option value="planchado">tratamientos</option>
+      <option value="corte">estilos</option>
+      <option value="tinte">materiales</option>
+    </select>
     </div>
 
         <!-- MARCA-->
