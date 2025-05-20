@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { OfrecidosComponent } from './ofrecidos/ofrecidos.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
@@ -17,8 +16,7 @@ import { provideHttpClient } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent,    
-    OfrecidosComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

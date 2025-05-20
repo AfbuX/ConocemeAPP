@@ -49,11 +49,16 @@ export class ListarCitaComponent {
   cambiarCita(cts: Cita) {
     this.isNew = false;
     this.citaSeleccionada = cts;
+  this.CerrarModal(this.modal)          // modificado
+
+
   }
 
   NuevaCita() {
     this.isNew = true;
     this.citaSeleccionada = { id: 0, nombre: "", fecha: new Date(), servicio: "" };
+    this.CerrarModal(this.modal)          // modificado
+
   }
 
   GuardarCambios() {
@@ -72,20 +77,20 @@ export class ListarCitaComponent {
     });
   }
 
-  CerrarModal(modal: ElementRef | undefined) {
-    if (modal) {
-      let bsModal = Modal.getInstance(modal?.nativeElement);
-      bsModal?.hide();
+  // CerrarModal(modal: ElementRef | undefined) {
+  //   if (modal) {
+  //     let bsModal = Modal.getInstance(modal?.nativeElement);
+  //     bsModal?.hide();
 
-      let backdrop = document.querySelector('.modal-backdrop.fade.show');
-      if (backdrop) {
-        backdrop.parentNode?.removeChild(backdrop);
-      }
+  //     let backdrop = document.querySelector(".modal-backdrop.fade.show");
+  //     if (backdrop) {
+  //       backdrop.parentNode?.removeChild(backdrop);
+  //     }
 
-      document.body.removeAttribute('style');
-      document.body.removeAttribute('class');
-    }
-  }
+  //     document.body.removeAttribute('style');
+  //     document.body.removeAttribute('class');
+  //   }
+  // }
 
   EliminarCita(cita: Cita) {
     Swal.fire(
@@ -111,5 +116,22 @@ export class ListarCitaComponent {
           });
         }
       });
+  }
+
+
+  // PARA QUITAR TELITA NEGRA
+  CerrarModal(modal: ElementRef | undefined) {
+    if (modal) {
+      let bsModal = Modal.getInstance(modal?.nativeElement)
+      bsModal?.hide();
+
+      let backdrop = document.querySelector(".modal-backdrop.fade.show")
+      if (backdrop) {
+        backdrop.parentNode?.removeChild(backdrop);
+      }
+      document.body.removeAttribute('style');
+      document.body.removeAttribute('class');
+    }
+
   }
 }

@@ -23,7 +23,7 @@
 .mi-tabla tbody {
     background-color: rgba(216, 191, 216, 0.8);
     overflow-y: auto;
-    max-height: calc(100vh - 300px); /* Altura máxima para el scroll */
+    max-height: calc(100vh - 300px);
 }
 
 .paPonerColor{

@@ -4,6 +4,7 @@ import { ListarCitaComponent } from './listar-citas/listar-citas.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CuCitasComponent } from './cu-citas/cu-citas.component';
 import { FormsModule } from '@angular/forms';
+import { CitaSharedModule } from '../ofrecidos/cita-shared.module';
 
 
 const routes: Routes = [
@@ -15,13 +16,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ListarCitaComponent,
-    CuCitasComponent
+    ListarCitaComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule
-  ]
+    FormsModule,
+    CitaSharedModule
+  ],
+
 })
 export class CitaModule { }

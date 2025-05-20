@@ -1,0 +1,66 @@
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center bg-light">
+
+
+    <div class="container">
+        <!-- (click)="enrutar()" -->
+        <div class="row">
+
+            <!-- Tarjeta 1 -->
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">CORTES</h5>
+                <img src="/assets/images/imgcortes.png" class="imgs" alt="CORTES">
+                <p class="card-text">Potencia tu imagen con un estilo que refleja tu esencia. Déjate sorprender por un
+                    corte impecable y lleno de carácter. </p>
+                <!-- <a href="AgendarJuanjo" class="btn btn-agendar">Agendar</a> -->
+            </div>
+            <!-- Tarjeta 4-->
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">COLORACIONES</h5>
+                <img src="/assets/images/imgcoloraciones.png" class="imgs" alt="COLORACIONES">
+                <p class="card-text">Ilumina tu cabello con tonos vibrantes y naturales. Dale vida a tu imagen con el
+                    color perfecto</p>
+                <!-- <a href="AgendarJuanjo" class="btn btn-agendar">Agendar</a> -->
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">TRATAMIENTOS</h5>
+                <img src="/assets/images/imgtratamientos.png" class="imgs" alt="TRATAMIENTOS">
+                <p class="card-text">Recupera la salud y brillo de tu cabello con nosotros. Dale a tu cabello el cuidado
+                    que se merece</p>
+                <!-- <a href="AgendarJuanjo" class="btn btn-agendar">Agendar</a> -->
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">PEINADOS</h5>
+                <img src="/assets/images/imgpeinados.png" class="imgs" alt="PEINADOS">
+                <p class="card-text">Deslumbra con peinados elegantes y llenos de estilo. Cada ocasión merece un toque
+                    especial</p>
+                <!-- <a href="AgendarJuanjo" class="btn btn-agendar">Agendar</a> -->
+            </div>
+            <a href="AgendarJuanjo" class="btn btn-agendar" (click)="NuevaCita()" data-bs-toggle="modal"
+                data-bs-target="#MiModal2">AGENDAR</a>
+        </div>
+    </div>
+
+    <div class="modal fade" id="MiModal2" #MiModall tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">tu cita!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <app-cu-citas [citica]="cita"></app-cu-citas>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" (click)="GuardarCambios()">mi cita!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

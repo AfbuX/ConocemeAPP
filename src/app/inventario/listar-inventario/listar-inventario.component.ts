@@ -45,12 +45,16 @@ export class ListarInventarioComponent {
   EditarProducto(producto: Producto) {
     this.isNew = false;
     this.productoSeleccionado = producto;
+    this.CerrarModal(this.modal)
+
 
   }
 
   NuevoProducto() {
     this.isNew = true;
     this.productoSeleccionado = { codigo: 0, nproducto: "", cantidad: 0, seccion: "", marca: "" };
+    this.CerrarModal(this.modal)
+
   }
 
   GuardarProducto() {

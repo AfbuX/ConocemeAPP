@@ -6,13 +6,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    min-height: calc(100vh - 178px);
     }
 
 .btn{
     margin-left: 600px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: burlywood;
-    color: chocolate;
+    color:rgb(153 73 1);
     width: 120px;
     font-size: 18px; 
     padding: 12px 24px;
@@ -41,7 +42,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     margin: auto;
-    margin-top: 30px;
+    
     /* display: flex; */
 }
 .card-title{
