@@ -46,6 +46,8 @@ export class ListarCitaComponent {
 
   citaSeleccionada: Cita | undefined = undefined;
 
+ 
+
   cambiarCita(cts: Cita) {
     this.isNew = false;
     this.citaSeleccionada = cts;

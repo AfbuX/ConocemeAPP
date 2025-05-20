@@ -59,82 +59,78 @@ export class ListarUsuarioComponent {
 
   guardarUsuario() {
 
-    //---------------------V2-----------------------//
 
- if (this.isNew) {
-    // Llamada API por POST
-    this._usuarioservice.postUsuario(this.usuarioSeleccion!)
-        
-        this.usuarioSeleccion = undefined;
-        this._util.CerrarModal(this.modal);
-        Swal.fire({ title: 'Usuario creado exitosamente', icon: 'success' });
-      ;
-  } else {
-    // Llamada API por PUT
-    this._usuarioservice.putUsuario(this.usuarioSeleccion!);
-      
-        this.usuarioSeleccion = undefined;
-        this._util.CerrarModal(this.modal);
-        Swal.fire({ title: 'Usuario actualizado correctamente', icon: 'success' });
-      
+
+    if (this.isNew) {
+      // Llamada API por POST
+      this._usuarioservice.postUsuario(this.usuarioSeleccion!)
+        .subscribe({
+          next: () => {
+            this.usuarioSeleccion = undefined;
+            this._util.CerrarModal(this.modal);
+            Swal.fire({ title: 'Usuario creado exitosamente', icon: 'success' });
+          },
+          error: (err) => {
+            console.error(err);
+            Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
+          }
+        });
+    } else {
+      // Llamada API por PUT
+      // this._usuarioservice.putUsuario(this.usuarioSeleccion!);
+
+      // this.usuarioSeleccion = undefined;
+      // this._util.CerrarModal(this.modal);
+      // Swal.fire({ title: 'Usuario actualizado correctamente', icon: 'success' });
+      this._usuarioservice.putUsuario(this.usuarioSeleccion!)
+        .subscribe({
+          next: () => {
+            this.usuarioSeleccion = undefined;
+            this._util.CerrarModal(this.modal);
+            Swal.fire({ title: 'Usuario creado exitosamente', icon: 'success' });
+          },
+          error: (err) => {
+            console.error(err);
+            Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
+          }
+        });
+
+    }
+
     
   }
 
-    // ---------------------V1-----------------------//
-    // if (this.isNew) {
-    //   this.vectorUsuario.push(this.usuarioSeleccion!); //Equivalente a llamar en una api
-    //   this.usuarioSeleccion = undefined;
-    //   this._util.CerrarModal(this.modal)
-    // }
-    // else {
-    //   //llamada api por put
-    //   this.usuarioSeleccion = undefined;
-    //   this._util.CerrarModal(this.modal)
-    // }
-
-    // Swal.fire({ title: 'Cambios Completados', icon: 'success' })
-
-    //------------------------------------------------------//
-  }
 
   eliminarUsuario(us: Usuario) {
-
-    
-
-    
-    Swal.fire(
-      {
-        icon: 'question',
-        title: `¿Está seguro de eliminar el usuario: ${us.nombre}?`,
-        showCancelButton: true,
-        showConfirmButton: true,
-        cancelButtonText: 'No, Cancelar',
-        confirmButtonText: 'Si, Confirmar',
-        allowOutsideClick: false,
-        buttonsStyling: false,
-        reverseButtons: true,
-
-        customClass: {
-          cancelButton: 'btn btn-secondary',
-          confirmButton: 'btn btn-danger',
-
-
-        }
-      }
-    )
-      .then(rs => {
-        if (rs.isConfirmed) {
-
-
-          Swal.fire({
-            title: 'Usuario Eliminado Correctamente',
-            icon: 'success'
-          })
-        }
-      });
-
-      
-  }
+  Swal.fire({
+    icon: 'question',
+    title: `¿Está seguro de eliminar el usuario: ${us.nombre}?`,
+    showCancelButton: true,
+    confirmButtonText: 'Sí, Confirmar',
+    cancelButtonText: 'No, Cancelar',
+    allowOutsideClick: false,
+    buttonsStyling: false,
+    reverseButtons: true,
+    customClass: {
+      cancelButton: 'btn btn-secondary',
+      confirmButton: 'btn btn-danger',
+    }
+  }).then(rs => {
+    if (rs.isConfirmed) {
+      this._usuarioservice.deleteUsuario(us.id)
+        .subscribe({
+          next: () => {
+            this.vectorUsuario = this.vectorUsuario.filter(u => u.id !== us.id); 
+            Swal.fire({ title: 'Usuario Eliminado Correctamente', icon: 'success' });
+          },
+          error: (err) => {
+            console.error(err);
+            Swal.fire({ title: 'Error al eliminar usuario', icon: 'error' });
+          }
+        });
+    }
+  });
+}
 
 
 
