@@ -12,8 +12,6 @@
   letter-spacing: 1px;
 }
 
-
-
 .btn-nuevo, .btn-eliminar, .btn-editar  {
   font-size: 1rem;
   font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
@@ -29,7 +27,6 @@
 background: #d2b49c;
 }
 .btn-eliminar{
-
   background: #8d4c67;
 }
 .btn-nuevo{
@@ -37,7 +34,6 @@ background: rgb(47, 255, 68);
 }
 
 tbody {
- 
   border: 1px solid;
   border-radius: 20px;
   font-family: 'Fredoka One', 'Comic Sans MS', cursive, sans-serif;
@@ -53,6 +49,102 @@ tbody {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.mi-tabla{
+    border: 2px solid #8B4513;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    background-color: rgba(216, 191, 216, 0.9);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: table;
+}
+
+.mi-tabla thead {
+    background-color: rgba(216, 191, 216, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.mi-tabla tbody {
+    background-color: rgba(216, 191, 216, 0.8);
+    overflow-y: auto;
+    max-height: calc(100vh - 300px);
+}
+
+.paPonerColor{
+    background-image: url('/assets/images/naturaleza-fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Estilos para los botones */
+.btn-add {
+    background-color: #689999;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}  
+
+.btn-add:hover {
+    background-color: #014d56;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn-edit {
+    background-color: #d2b49c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #d2b49c;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background-color: #7d538e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #e7a6c9;
+    transform: scale(1.05);
+}
+
+/* Estilos para el spinner */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: #689999;
 }
 
 
