@@ -9,6 +9,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+
+
+  
   userType: string = '';
   email: string = '';
   password: string = '';
@@ -31,7 +34,7 @@ export class LoginComponent implements OnInit {
     //this.authService.login(this.userType);
     
     if (this.userType === 'cliente') {
-      this.router.navigate(['/agendar']);
+      this.router.navigate(['/ofrecidos']);
     } else {
       this.router.navigate(['/usuario']);
     }

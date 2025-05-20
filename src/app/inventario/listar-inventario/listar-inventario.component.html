@@ -1,0 +1,77 @@
+
+<div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light">
+ <div class="paPonerColor">
+  <div class="row">
+    <div class="col-12 text-end pe-5">
+      <button class="btn btn-nuevo" (click)="NuevoProducto()" data-bs-toggle="modal" data-bs-target="#modalProducto">
+            Nuevo
+        </button>
+    </div>
+  </div>   
+
+    <!-- ////////////////////////////////////////////////// -->
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-stripped table-hover">
+                <thead>
+                    <tr class="titulostabla">
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Seccion</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col"></th>
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of vectorProductos">
+                        <th scope="row">{{prod.codigo}}</th>
+                        <td>{{prod.nproducto}}</td>
+                        <td>{{prod.cantidad}}</td>
+                        <td>{{prod.seccion}}</td>
+                        <td>{{prod.marca}}</td>
+
+                        <td>
+                            <button type="button" class="btn btn-editar" data-bs-toggle="modal"
+                                data-bs-target="#modalProducto" (click)="EditarProducto(prod)"> Editar </button>
+                            <button type="button" class="btn btn-eliminar"
+                                (click)="EliminarProducto(prod)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProducto">
+    Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto" #modalProducto data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalProducto">{{isNew?'Nuevo':'Editar'}} Producto:
+                    {{this.productoSeleccionado?.nproducto}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <app-ca-prod [producto]="productoSeleccionado">
+
+                </app-ca-prod>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="GuardarProducto()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

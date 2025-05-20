@@ -1,5 +1,5 @@
 .mi-tabla{
-    font-family:"Comic Sans MS", cursive, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 2px solid #8B4513;
     border-radius: 15px;
     overflow: hidden;
@@ -23,7 +23,7 @@
 .mi-tabla tbody {
     background-color: rgba(216, 191, 216, 0.8);
     overflow-y: auto;
-    max-height: calc(100vh - 300px); /* Altura máxima para el scroll */
+    max-height: calc(100vh - 300px);
 }
 
 .paPonerColor{

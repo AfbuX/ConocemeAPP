@@ -11,7 +11,8 @@ const routes: Routes = [
 
   { path: 'usuario', loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule)},
   { path: 'agendar', loadChildren: () => import('./cita/cita.module').then(m => m.CitaModule)},
-
+  { path: 'ofrecidos', loadChildren: () => import('./ofrecidos/ofrecidos.module').then(m => m.OfrecidosModule)},
+  { path: 'inventario', loadChildren: ()=> import ('./inventario/inventario.module').then(m=>m.InventarioModule)},
 ];
 
 @NgModule({
