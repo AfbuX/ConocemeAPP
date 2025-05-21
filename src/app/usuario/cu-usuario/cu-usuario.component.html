@@ -5,19 +5,27 @@
     <input type="text" *ngIf="usuario" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre"
       [(ngModel)]="usuario.nombre">
   </div>
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <label for="fecha" class="form-label">Fecha de Registro</label>
     <input class="form-control" id="fecha" type="datetime-local" *ngIf="usuario" name="fecha"
       [ngModel]="formatDateTimeLocal(usuario.fecha)" (ngModelChange)="updateDate($event)">
-  </div>
+  </div> -->
 
+    <div class="mb-3">
+        <label for="roll" class="form-label">Rol</label>
+        <select class="form-control" *ngIf="usuario" [(ngModel)]="usuario.roll" name="roll">
+      <option value="" disabled selected>Selecciona seccion</option>
+      <option value="Admin">Admin</option>
+      <option value="Empleado">Empleado</option>
+      <option value="Cliente">Cliente</option>
+    </select>
+    </div>
 
-
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <label for="roll" class="form-label">Rol</label>
     <input class="form-control" id="roll" type="text" *ngIf="usuario" name="roll" placeholder="Ingrese Roll"
       [(ngModel)]="usuario.roll">
-  </div>
+  </div> -->
 
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
@@ -27,7 +35,7 @@
 
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input class="form-control" id="password" type="text" *ngIf="usuario" name="dbpassword" placeholder="Ingrese Password"
+    <input class="form-control" id="password" type="password" *ngIf="usuario" name="dbpassword" placeholder="Ingrese Password"
       [(ngModel)]="usuario.dbpassword">
   </div>
 </form>

@@ -23,10 +23,10 @@
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Fecha Registro</th>
             <th scope="col">Rol</th>
             <th scope="col">Email</th>
             <th scope="col">Password</th>
+            <th scope="col">Fecha Registro</th>
             <th scope="col" class="text-end pe-5">Opciones</th>
           </tr>
         </thead>
@@ -34,10 +34,10 @@
           <tr *ngFor="let us of vectorUsuario">
             <th scope="row">{{us.id}}</th>
             <td>{{us.nombre}}</td>
-            <td>{{us.fecha | date: 'dd/MM/yyy HH:mm'}}</td>
             <td>{{us.roll}}</td>
             <td>{{us.email}}</td>
             <td>{{us.dbpassword}}</td>
+            <td>{{us.fecha | date: 'dd/MM/yyy HH:mm'}}</td>
             <td class="text-end">
               <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#modalUsuario"
                 (click)="editarUsuario(us)"><i class="bi bi-pencil-square"></i> Editar</button>
