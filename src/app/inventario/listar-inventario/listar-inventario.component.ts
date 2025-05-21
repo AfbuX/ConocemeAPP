@@ -2,6 +2,9 @@ import { Component, ElementRef, ViewChild, viewChild } from '@angular/core';
 import { Producto } from '../../models/producto';
 import { Modal } from 'bootstrap';
 import Swal from 'sweetalert2';
+import { inventarioService } from '../../service/inventario.service';
+import { UtilityService } from '../../services/utility.service';
+
 
 @Component({// AQUI LLEGARIA LA INFO DESDE LA API AL AÑADIR UN PRODUCTO
   selector: 'app-listar-inventario',//id unico para identificar este component
@@ -11,119 +14,100 @@ import Swal from 'sweetalert2';
 })
 export class ListarInventarioComponent {
   @ViewChild('modalProducto') modal: ElementRef | undefined;
-  vectorProductos: Producto[] = [
-    {
-      codigo: 1, nproducto: "Hidratante profundo", cantidad: 22, seccion: 'Tratamientos',
-      marca: 'L Oréal'
-    },
-    {
-      codigo: 2, nproducto: "Spray", cantidad: 30, seccion: 'Estilos',
-      marca: 'L Oréal'
-    },
-    {
-      codigo: 3, nproducto: "Acondicionador", cantidad: 45, seccion: 'Tratamientos',
-      marca: 'Enkor'
-    },
-    {
-      codigo: 4, nproducto: "Sérum", cantidad: 15, seccion: 'Tratamientos',
-      marca: 'Garnier'
-    },
-    {
-      codigo: 5, nproducto: "Tinte color Cobrizo", cantidad: 18, seccion: 'Estilos',
-      marca: 'Garnier'
-    },
-    {
-      codigo: 6, nproducto: "Tijeras con microdentado", cantidad: 10, seccion: 'Material',
-      marca: 'Enkor'
-    }
-  ];
+  vectorProductos: Producto[] = [];
 
   productoSeleccionado: Producto | undefined = undefined;
-
   isNew: boolean = false;
+  isLoading= true;
+
+  constructor(private _inventarioservice: inventarioService, private _util: UtilityService) {
+      this.loadproducto();
+    }
+  
+    loadproducto() {
+      this.isLoading = true;
+      this._inventarioservice.getProducto()
+        .subscribe((rs) => {
+          this.vectorProductos = rs;
+          this.isLoading = false;
+        });
+    }
 
   EditarProducto(producto: Producto) {
+    this._util.AbrirModal(this.modal);
     this.isNew = false;
     this.productoSeleccionado = producto;
-    this.CerrarModal(this.modal)
 
 
   }
 
   NuevoProducto() {
+    this._util.AbrirModal(this.modal);
     this.isNew = true;
     this.productoSeleccionado = { codigo: 0, nproducto: "", cantidad: 0, seccion: "", marca: "" };
-    this.CerrarModal(this.modal)
+   
 
   }
 
   GuardarProducto() {
-    if (this.isNew) {
-      this.vectorProductos.push(this.productoSeleccionado!);//equivalente llamar una API
-      this.productoSeleccionado = undefined;
-      this.CerrarModal(this.modal)
-      // Swal.fire({
-      //   allowEscapeKey:true
-      // })
-    }
-    else {
-      this.productoSeleccionado = undefined;//lo limpia
-      this.CerrarModal(this.modal)
-    }
-    Swal.fire({ title: "Producto guardado!", icon: 'success' })
-  }
+     if (this.isNew) {
+          this._inventarioservice.postProducto(this.productoSeleccionado!)
+            .subscribe({
+              next: () => {
+                this.productoSeleccionado = undefined;
+                this._util.CerrarModal(this.modal);
+                Swal.fire({ title: 'Producto creado exitosamente', icon: 'success' });
+              },
+              error: (err) => {
+                console.error(err);
+                Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
+              }
+            });
+        } else {
+           this._inventarioservice.putProducto(this.productoSeleccionado!)
+            .subscribe({
+              next: () => {
+                this.productoSeleccionado = undefined;
+                this._util.CerrarModal(this.modal);
+                Swal.fire({ title: 'Producto creado exitosamente', icon: 'success' });
+              },
+              error: (err) => {
+                console.error(err);
+                Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
+              }
+            });
+          }
+        }
 
   EliminarProducto(prod: Producto) {
-
-    Swal.fire(
-      {
-        icon: 'warning',
-        title: `¿Deseas eliminar "${prod.nproducto}"?`,
-        showDenyButton: true,
-        showConfirmButton: true,
-        denyButtonText: 'Mejor no',
-        confirmButtonText: 'Si, eliminalo',
-        allowOutsideClick: false,
-        reverseButtons: true
-
-      }
-    )
-
-      .then(respuesta => {
-        if (respuesta.isConfirmed) {
-/////// AQUI VA CODIGO LLAMADO API PAra
-//  DELETE
-          this.productoSeleccionado = { codigo: 0, nproducto: "", cantidad: 0, seccion: "", marca: "" };
-
-          Swal.fire({
-            title: `"${prod.nproducto}" se ha eliminado correctamente`,
-            icon: 'success'
-          })
-        }
-        else {
-          Swal.fire({
-            title: ` No se eliminó`,
-            icon: 'error'
-          })
-        }
-
-      });
-  }
-
-  CerrarModal(modal: ElementRef | undefined) {
-    if (modal) {
-      let bsModal = Modal.getInstance(modal?.nativeElement)
-      bsModal?.hide();
-
-      let backdrop = document.querySelector(".modal-backdrop.fade.show")
-      if (backdrop) {
-        backdrop.parentNode?.removeChild(backdrop);
-      }
-      document.body.removeAttribute('style');
-      document.body.removeAttribute('class');
+Swal.fire({
+    icon: 'question',
+    title: `¿Está seguro de eliminar el usuario: ${prod.nproducto}?`,
+    showCancelButton: true,
+    confirmButtonText: 'Sí, Confirmar',
+    cancelButtonText: 'No, Cancelar',
+    allowOutsideClick: false,
+    buttonsStyling: false,
+    reverseButtons: true,
+    customClass: {
+      cancelButton: 'btn btn-secondary',
+      confirmButton: 'btn btn-danger',
     }
-
+  }).then(rs => {
+    if (rs.isConfirmed) {
+      this._inventarioservice.deleteProducto(prod.codigo)
+        .subscribe({
+          next: () => {
+            this.vectorProductos = this.vectorProductos.filter(u => u.codigo !== prod.codigo); 
+            Swal.fire({ title: 'Usuario Eliminado Correctamente', icon: 'success' });
+          },
+          error: (err) => {
+            console.error(err);
+            Swal.fire({ title: 'Error al eliminar usuario', icon: 'error' });
+          }
+        });
+    }
+  });
   }
 
 }
-//, Cantidad: 4, Seccion: "Tratamientos", Marca: "Enkor"}

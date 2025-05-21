@@ -3,6 +3,8 @@ import { Cita } from '../../models/cita';
 import { Modal } from 'bootstrap';
 import { hide } from '@popperjs/core';
 import Swal from 'sweetalert2';
+import { citaService } from '../../service/cita.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-listar-cita',
@@ -15,125 +17,129 @@ export class ListarCitaComponent {
   @ViewChild("MiModall") modal: ElementRef | undefined;
 
   vectorCitas: Cita[] = [
-    {
-      id: 1, nombre: "Juan Manuel", fecha: new Date(), servicio: "Planchado"
-    },
-    {
-      id: 2, nombre: "Pepito Perez", fecha: new Date(), servicio: "Planchado"
-    },
-    {
-      id: 3, nombre: "Anny Sofia", fecha: new Date(), servicio: "Corte"
-    },
-    {
-      id: 4, nombre: "Andres", fecha: new Date(), servicio: "Planchado"
-    },
-    {
-      id: 5, nombre: "Miguel", fecha: new Date(), servicio: "Tinte"
-    },
-    {
-      id: 6, nombre: "Parcero", fecha: new Date(), servicio: "Planchado"
-    },
-    {
-      id: 7, nombre: "Vecino", fecha: new Date(), servicio: "Corte"
-    },
-    {
-      id: 8, nombre: "Otro Parcero", fecha: new Date(), servicio: "Planchado"
-    }
+    // {
+    //   id: 1, nombre: "Juan Manuel", fecha: new Date(), servicio: "Planchado"
+    // },
+    // {
+    //   id: 2, nombre: "Pepito Perez", fecha: new Date(), servicio: "Planchado"
+    // },
+    // {
+    //   id: 3, nombre: "Anny Sofia", fecha: new Date(), servicio: "Corte"
+    // },
+    // {
+    //   id: 4, nombre: "Andres", fecha: new Date(), servicio: "Planchado"
+    // },
+    // {
+    //   id: 5, nombre: "Miguel", fecha: new Date(), servicio: "Tinte"
+    // },
+    // {
+    //   id: 6, nombre: "Parcero", fecha: new Date(), servicio: "Planchado"
+    // },
+    // {
+    //   id: 7, nombre: "Vecino", fecha: new Date(), servicio: "Corte"
+    // },
+    // {
+    //   id: 8, nombre: "Otro Parcero", fecha: new Date(), servicio: "Planchado"
+    // }
 
   ];
 
   isNew: boolean = false;
-
+  isLoading = true;
   citaSeleccionada: Cita | undefined = undefined;
 
+  constructor(private _citaservice: citaService, private _util: UtilityService) {
+      this.loadcita();
+    }
+  
+    loadcita() {
+      this.isLoading = true;
+      this._citaservice.getCita()
+        .subscribe((rs) => {
+          this.vectorCitas = rs;
+          this.isLoading = false;
+        });
+    }
  
 
   cambiarCita(cts: Cita) {
+    this._util.AbrirModal(this.modal);
     this.isNew = false;
     this.citaSeleccionada = cts;
-  this.CerrarModal(this.modal)          // modificado
 
 
   }
 
   NuevaCita() {
+    this._util.AbrirModal(this.modal);
     this.isNew = true;
     this.citaSeleccionada = { id: 0, nombre: "", fecha: new Date(), servicio: "" };
-    this.CerrarModal(this.modal)          // modificado
+    
 
   }
 
-  GuardarCambios() {
+  guardarcita() {
     if (this.isNew) {
-      this.vectorCitas.push(this.citaSeleccionada!);
-      this.citaSeleccionada = undefined;
-      this.CerrarModal(this.modal)
-    }
-    else {
-      this.citaSeleccionada = undefined;
-      this.CerrarModal(this.modal)
-    }
-    Swal.fire({
-      title: 'Cambios guardados correctamente',
-      icon: 'success'
-    });
-  }
-
-  // CerrarModal(modal: ElementRef | undefined) {
-  //   if (modal) {
-  //     let bsModal = Modal.getInstance(modal?.nativeElement);
-  //     bsModal?.hide();
-
-  //     let backdrop = document.querySelector(".modal-backdrop.fade.show");
-  //     if (backdrop) {
-  //       backdrop.parentNode?.removeChild(backdrop);
-  //     }
-
-  //     document.body.removeAttribute('style');
-  //     document.body.removeAttribute('class');
-  //   }
-  // }
-
-  EliminarCita(cita: Cita) {
-    Swal.fire(
-      {
-        icon: 'question',
-        title: "Quieres Eliminar tu cita ?",
-        showCancelButton: true,
-        showConfirmButton: true,
-        cancelButtonText: "Cancelar",
-        confirmButtonText: "Si, Confirmar",
-        allowOutsideClick: false,
-        reverseButtons: true,
-
-      }
-    )
-      .then((rs) => {
-        if (rs.isConfirmed) {
-          // Llamada API DELETE
-
-          Swal.fire({
-            title: 'Cita eliminada correctamente',
-            icon: 'success'
-          });
+          this._citaservice.postCita(this.citaSeleccionada!)
+            .subscribe({
+              next: () => {
+                this.citaSeleccionada = undefined;
+                this._util.CerrarModal(this.modal);
+                Swal.fire({ title: 'Cita creada exitosamente', icon: 'success' });
+              },
+              error: (err) => {
+                console.error(err);
+                Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
+              }
+            });
+        } else {
+           this._citaservice.putCita(this.citaSeleccionada!)
+            .subscribe({
+              next: () => {
+                this.citaSeleccionada = undefined;
+                this._util.CerrarModal(this.modal);
+                Swal.fire({ title: 'Cita creada exitosamente', icon: 'success' });
+              },
+              error: (err) => {
+                console.error(err);
+                Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
+              }
+            });
+    
         }
-      });
+  }
+
+  EliminarCita(us: Cita) {
+    Swal.fire({
+       icon: 'question',
+       title: `¿Está seguro de eliminar el usuario: ${us.nombre}?`,
+       showCancelButton: true,
+       confirmButtonText: 'Sí, Confirmar',
+       cancelButtonText: 'No, Cancelar',
+       allowOutsideClick: false,
+       buttonsStyling: false,
+       reverseButtons: true,
+       customClass: {
+         cancelButton: 'btn btn-secondary',
+         confirmButton: 'btn btn-danger',
+       }
+     }).then(rs => {
+       if (rs.isConfirmed) {
+         this._citaservice.deleteCita(us.id)
+           .subscribe({
+             next: () => {
+               this.vectorCitas = this.vectorCitas.filter(u => u.id !== us.id); 
+               Swal.fire({ title: 'Cita Eliminada Correctamente', icon: 'success' });
+             },
+             error: (err) => {
+               console.error(err);
+               Swal.fire({ title: 'Error al eliminar usuario', icon: 'error' });
+             }
+           });
+       }
+     });
   }
 
 
-  // PARA QUITAR TELITA NEGRA
-  CerrarModal(modal: ElementRef | undefined) {
-    if (modal) {
-      let bsModal = Modal.getInstance(modal?.nativeElement)
-      bsModal?.hide();
-
-      let backdrop = document.querySelector(".modal-backdrop.fade.show")
-      if (backdrop) {
-        backdrop.parentNode?.removeChild(backdrop);
-      }
-      document.body.removeAttribute('style');
-      document.body.removeAttribute('class');
-    }
-
-  }
+  
 }

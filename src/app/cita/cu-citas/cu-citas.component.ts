@@ -8,7 +8,12 @@ import { format } from 'date-fns-tz';
   styleUrl: './cu-citas.component.css'
 })
 export class CuCitasComponent {
-@Input() citica : Cita  | undefined;
+  @Input() citica : Cita  | undefined;
+@Input() nombre : Cita  | undefined;
+@Input() fecha : Cita  | undefined;
+@Input() servicio : Cita  | undefined;
+
+
 
 
 formatearFechita(fecha:Date){

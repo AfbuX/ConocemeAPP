@@ -14,20 +14,7 @@ import { UtilityService } from '../../services/utility.service';
 export class ListarUsuarioComponent {
 
   @ViewChild('modalUsuario') modal: ElementRef | undefined;
-  vectorUsuario: Usuario[] = [
-
-
-    // {id:1, nombre:"Carlos", fecha:new Date(), roll: "Admon", email: "tdea@tdea.com" , password: "123"  },
-    // {id:2, nombre: "Maria", fecha:new Date(),  roll: "Empleado", email: "tdea2@tdea.com", password: "456" },
-    // {id:3, nombre: "Pablo", fecha:new Date(), roll: "Admon", email: "tdea3@tdea.com", password: "789"},
-    // {id:4, nombre: "Oscar", fecha:new Date(), roll: "Cliente", email: "tdea4@tdea.com", password: "7839"},
-    // {id:5, nombre: "Tytiana", fecha:new Date(), roll: "Cliente", email: "tdea5@tdea.com", password: "7489"},
-    // {id:6, nombre: "Claudia", fecha:new Date(), roll: "Cliente", email: "tdea6@tdea.com", password: "6789"},
-    // {id:7, nombre: "Tito", fecha:new Date(), roll: "Cliente", email: "tdea7@tdea.com", password: "7789"},
-    // {id:8, nombre: "Manuel", fecha:new Date(), roll: "Cliente", email: "tdea8@tdea.com", password: "9789"},
-    // {id:9, nombre: "Arlong", fecha:new Date(), roll: "Cliente", email: "tdea9@tdea.com", password: "1789"},
-
-  ];
+  vectorUsuario: Usuario[] = [];
 
   usuarioSeleccion: Usuario | undefined = undefined;
   isNew: boolean = false;
@@ -58,11 +45,7 @@ export class ListarUsuarioComponent {
   }
 
   guardarUsuario() {
-
-
-
     if (this.isNew) {
-      // Llamada API por POST
       this._usuarioservice.postUsuario(this.usuarioSeleccion!)
         .subscribe({
           next: () => {
@@ -76,13 +59,7 @@ export class ListarUsuarioComponent {
           }
         });
     } else {
-      // Llamada API por PUT
-      // this._usuarioservice.putUsuario(this.usuarioSeleccion!);
-
-      // this.usuarioSeleccion = undefined;
-      // this._util.CerrarModal(this.modal);
-      // Swal.fire({ title: 'Usuario actualizado correctamente', icon: 'success' });
-      this._usuarioservice.putUsuario(this.usuarioSeleccion!)
+       this._usuarioservice.putUsuario(this.usuarioSeleccion!)
         .subscribe({
           next: () => {
             this.usuarioSeleccion = undefined;
