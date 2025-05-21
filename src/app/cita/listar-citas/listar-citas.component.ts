@@ -16,33 +16,7 @@ export class ListarCitaComponent {
 
   @ViewChild("MiModall") modal: ElementRef | undefined;
 
-  vectorCitas: Cita[] = [
-    // {
-    //   id: 1, nombre: "Juan Manuel", fecha: new Date(), servicio: "Planchado"
-    // },
-    // {
-    //   id: 2, nombre: "Pepito Perez", fecha: new Date(), servicio: "Planchado"
-    // },
-    // {
-    //   id: 3, nombre: "Anny Sofia", fecha: new Date(), servicio: "Corte"
-    // },
-    // {
-    //   id: 4, nombre: "Andres", fecha: new Date(), servicio: "Planchado"
-    // },
-    // {
-    //   id: 5, nombre: "Miguel", fecha: new Date(), servicio: "Tinte"
-    // },
-    // {
-    //   id: 6, nombre: "Parcero", fecha: new Date(), servicio: "Planchado"
-    // },
-    // {
-    //   id: 7, nombre: "Vecino", fecha: new Date(), servicio: "Corte"
-    // },
-    // {
-    //   id: 8, nombre: "Otro Parcero", fecha: new Date(), servicio: "Planchado"
-    // }
-
-  ];
+  vectorCitas: Cita[] = [];
 
   isNew: boolean = false;
   isLoading = true;
