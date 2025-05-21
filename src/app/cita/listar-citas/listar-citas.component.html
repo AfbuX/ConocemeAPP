@@ -1,40 +1,41 @@
 <div class="paPonerColor">
-  <div class="row">
-    <div class="col-12 text-end pe-5">
-      <button class="btn btn-add" (click)="NuevaCita()" data-bs-toggle="modal" data-bs-target="#MiModal">
-        <i class="bi bi-plus-circle"></i> Nueva cita
-      </button>
+    <div class="row justify-content-center me-1 mt-4">
+      <div class="col-md-10 col-lg-9 text-end pe-0">
+        <button class="btn btn-add" (click)="NuevaCita()" data-bs-toggle="modal" data-bs-target="#MiModal">
+          <i class="bi bi-plus-circle"></i> Nueva cita
+        </button>
+      </div>
     </div>
-  </div>
-  
-  <div class="row" id="colorsito">
-    <table class="table mi-tabla">
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Fecha</th>
-          <th scope="col">Servicio</th>
-          <th scope="col">Opciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ct of vectorCitas">
-          <th scope="row">{{ct.id}}</th>
-          <td>{{ct.nombre}}</td>
-          <td>{{ct.fecha | date: 'dd/MM HH:mm'}}</td>
-          <td>{{ct.servicio }}</td>
-          <td>
-            <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#MiModal"
-              (click)="cambiarCita(ct)"><i class="bi bi-pencil-square"></i> Editar</button>
-            <button class="btn btn-delete" (click)="EliminarCita(ct)"><i class="bi bi-trash"></i> Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-9">
+        <table class="table mi-tabla mx-auto">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Servicio</th>
+              <th scope="col" class="text-end pe-5">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ct of vectorCitas">
+              <th scope="row">{{ct.id}}</th>
+              <td>{{ct.nombre}}</td>
+              <td>{{ct.fecha | date: 'dd/MM HH:mm'}}</td>
+              <td>{{ct.servicio }}</td>
+              <td class="text-end">
+                <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#MiModal"
+                  (click)="cambiarCita(ct)"><i class="bi bi-pencil-square"></i> Editar</button>
+                <button class="btn btn-delete" (click)="EliminarCita(ct)"><i class="bi bi-trash"></i> Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-  <!-- Modal Citas -->
   <div class="modal fade" id="MiModal" #MiModall tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
