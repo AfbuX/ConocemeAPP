@@ -5,7 +5,7 @@
       <p class="login-subtitle">
         {{ userType === 'cliente' ? '¡Bienvenido! Ingresa tus datos para iniciar sesión:' : '¡Bienvenido Trabajador! Ingresa tus datos para iniciar sesión:' }}
       </p>
-      <form (ngSubmit)="onSubmit()">
+      <form #loginForm="ngForm" (ngSubmit)="loguin()">
         <div class="login-field">
           <label for="email">Usuario:</label>
           <input type="email" id="email" (ngModel)="email" name="email" required />
