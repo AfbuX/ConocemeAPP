@@ -31,10 +31,16 @@ export class LoginComponent implements OnInit {
   }
 
   loguin() {
-    this._utilServie.Login(this.email, this.password)
+    console.log(this.email, this.password);
+    
+    this._utilServie.Login(this.email, this.password, this.userType)
     .subscribe(rs => {
       if(rs){
-        this.router.navigate(['/'])
+        if (this.userType === 'Cliente') {
+          this.router.navigate(['/ofrecidos']);
+        } else {
+          this.router.navigate(['/usuario']);
+        }
       }else{
         Swal.fire({
           title: 'Usuario y/o contraseña incorrecta',
@@ -43,10 +49,6 @@ export class LoginComponent implements OnInit {
       }
     })
     
-    // if (this.userType === 'cliente') {
-    //   this.router.navigate(['/ofrecidos']);
-    // } else {
-    //   this.router.navigate(['/usuario']);
-    // }
+    
   }
 }

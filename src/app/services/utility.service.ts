@@ -9,24 +9,26 @@ export class UtilityService {
 
   constructor() { }
 
-  Login(email: string, password: string): Observable<boolean> {
+  Login(email: string, password: string, rol: string): Observable<boolean> {
     return new Observable(subs => {
-      // Credenciales para administrador
-      const adminCredentials = email === 'admin@gmail.com' && password === 'Admin';
-      
-      // Credenciales para cliente
-      const clientCredentials = email === 'cliente@gmail.com' && password === 'Cliente123';
-      
-      // Credenciales para trabajador
-      const workerCredentials = email === 'trabajador@gmail.com' && password === 'Trabajador123';
 
-      // Retorna true si alguna de las credenciales coincide
-      const isValid = adminCredentials || clientCredentials || workerCredentials;
-      
-      subs.next(isValid);
-      subs.complete();
+        let adminCredentials = false;
+        let workerCredentials = false;
+        let clientCredentials = false;
+
+        if (rol === 'Empleado') {
+            adminCredentials = email === 'admin@gmail.com' && password === 'Admin';
+            workerCredentials = email === 'empleado@gmail.com' && password === 'Empleado123';
+        } else {
+            clientCredentials = email === 'cliente@gmail.com' && password === 'Cliente123';
+        }
+
+        const isValid = adminCredentials || clientCredentials || workerCredentials;
+        
+        subs.next(isValid);
+        subs.complete();
     });
-  }
+}
 
   AbrirModal(modal:ElementRef | undefined){
     if (modal){
