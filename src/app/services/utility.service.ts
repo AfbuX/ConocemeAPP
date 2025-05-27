@@ -51,7 +51,5 @@ export class UtilityService {
     document.body.removeAttribute('style');
     document.body.removeAttribute('class');
   }
-
-
 }
 }
