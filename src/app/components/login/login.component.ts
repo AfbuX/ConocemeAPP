@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loguin() {
+  login() {
     console.log(this.email, this.password);
     
     this._utilServie.Login(this.email, this.password, this.userType)
