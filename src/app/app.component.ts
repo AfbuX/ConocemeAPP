@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +10,17 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'conocemeAPP';
   hideHeaderFooter = false;
-  hideHeader =false;
+  constructor(private router: Router) {} 
 
-  constructor(private router: Router) {
-    
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const url = event.urlAfterRedirects;
-        this.hideHeaderFooter = url === '/' || url.startsWith('/login');
-      }
-    });
+  isLoguinRoute(): boolean{
+    return this.router.url === '/' || this.router.url.startsWith('/login');
   }
+  // constructor(private router: Router) {
+  //   this.router.events.subscribe(event => {
+  //     if (event instanceof NavigationEnd) {
+  //       const url = event.urlAfterRedirects;
+  //       this.hideHeaderFooter = url === '/' || url.startsWith('/login');
+  //     }
+  //   });
+  // }
 }

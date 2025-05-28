@@ -1,9 +1,9 @@
-<ng-container *ngIf="!hideHeaderFooter">
+<ng-container *ngIf="!isLoguinRoute()">
   <app-header></app-header>
 </ng-container>
 
 <router-outlet></router-outlet>
 
-<ng-container *ngIf="!hideHeaderFooter">
+<ng-container *ngIf="!isLoguinRoute()">
   <app-footer></app-footer>
 </ng-container>
