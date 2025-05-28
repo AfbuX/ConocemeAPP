@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  hideHeader = false;
+  constructor(private router: Router) {
+    let dev = localStorage.getItem("us")
+    this.hideHeader = dev == "cliente" ? false : true;
+  }
 
 }

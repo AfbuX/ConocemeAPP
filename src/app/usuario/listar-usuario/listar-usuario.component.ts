@@ -52,11 +52,11 @@ export class ListarUsuarioComponent {
             this.usuarioSeleccion = undefined;
             this._util.CerrarModal(this.modal);
             Swal.fire({ title: 'Usuario creado exitosamente', icon: 'success' });
-          },
+        },
           error: (err) => {
             console.error(err);
             Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
-          }
+        }
         });
     } else {
        this._usuarioservice.putUsuario(this.usuarioSeleccion!)
@@ -65,15 +65,16 @@ export class ListarUsuarioComponent {
             this.usuarioSeleccion = undefined;
             this._util.CerrarModal(this.modal);
             Swal.fire({ title: 'Usuario creado exitosamente', icon: 'success' });
-          },
+          
+        },
           error: (err) => {
             console.error(err);
             Swal.fire({ title: 'Ha ouccurido un error inesperado', icon: 'error' });
-          }
+          } 
         });
-
     }
-
+    
+    
     
   }
 

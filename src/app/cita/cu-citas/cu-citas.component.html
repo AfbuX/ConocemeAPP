@@ -10,12 +10,12 @@
       [ngModel]="formatearFechita(citica.fecha)" (ngModelChange)="actualizarFecha($event)">
   </div>
   <div class="mb-3">
-    <label for="Servicio" class="form-label">Servcio</label>
+    <label for="Servicio" class="form-label">Servicio</label>
     <select class="form-control" *ngIf="citica" [(ngModel)]="citica.servicio" name="nombreServicio">
       <option value="" disabled selected>Selecciona un servicio</option>
-      <option value="planchado">Tratamientos</option>
-      <option value="corte">Estilos</option>
-      <option value="tinte">Materiales</option>
+      <option value="Corte">Corte</option>
+      <option value="Coloración">Coloración</option>
+      <option value="Tratamientos">Tratamientos</option>
       <option value="Peinados">Peinados</option>
     </select>
   </div>

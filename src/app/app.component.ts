@@ -10,8 +10,10 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
   title = 'conocemeAPP';
   hideHeaderFooter = false;
+  hideHeader =false;
 
   constructor(private router: Router) {
+    
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const url = event.urlAfterRedirects;
